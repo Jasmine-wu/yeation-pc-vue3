@@ -4,7 +4,7 @@ const routes = [{
     path: "/",
     name: "home",
     component: () =>
-        import ("../views/home")
+        import ("@/views/home")
 }, ]
 const router = createRouter({
     history: createWebHashHistory(),
