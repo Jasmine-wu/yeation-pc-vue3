@@ -1,30 +1,43 @@
-const state = {
-    token: "1333"
-};
-
-const getters = {
-    message(state) {
-        return state.token + "message"
+// state从选项变成函数
+const state = () => {
+    return {
+        // 用户信息
+        profile: {
+            id: '100',
+            avatar: '',
+            nickname: '',
+            account: '',
+            mobile: '',
+            token: ''
+        }
     }
 };
 
 const mutations = {
-    updateToken(state, val) {
-        state.token = val;
+    setUser(state, playload) {
+        state.profile = playload;
     },
+    removeUser(state) {
+        state.profile = {
+            id: '',
+            avatar: '',
+            nickname: '',
+            account: '',
+            mobile: '',
+            token: ''
+        }
+    }
 };
 const actions = {
-    syncUpdateToken(context, val) {
-        setTimeout(() => {
-            context.commit("updateToken", val)
-        }, 1000);
+
+    login() {
+
     }
 };
 
 export default {
     namespaced: true,
     state,
-    getters,
     mutations,
     actions
 }
