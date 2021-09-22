@@ -74,3 +74,54 @@ import { useStore } from "vuex";
 - 问题2:忽略某些文件不进行风格检查
 - 理由：如果你引入的第三方库代码风格跟你的不一样，第三方库一引入，eslint就会报错
 - 解决：添加.eslintignore文件，忽略第三方库以及dist目录代码风格检查
+
+## 05 axios封装
+### -1.创建axios实例
+- 导出baseURL的必要，因为有些请求可能不是axios发出的也需要baseURL。
+### -2.请求拦截器 
+#### -（1）token注入
+#### -（2）主动处理token过期问题。
+### -3.响应拦截器 
+#### -（1）剥离无效数据
+- axios内部对响应数据包了一层data
+#### -（2）被动处理token失效问题
+- 被动处理token过期问题一般是，后台返回一个token无效的状态，用户判断响应状态码进行token过期后的逻辑处理
+- token过期场景1:假如进入到购物车页，点击支付结算，如果未登陆或者token过期，1.跳转到登陆页，2，跳转时传递当前路由地址给登陆页（因为登陆成功以后要自动跳转到原地址（支付页））
+- 被动处理token失效逻辑：
+  - 判断状态码，如果是过期的状态码
+  - 清除用户数据
+  - 跳转到登陆页，同时传递当前页路由地址过去（登陆成功时可自动跳转回来）
+    - 1.如何在js文件拿到当前路由地址？
+  ```js
+        const fullPath = encodeURIComponent(router.currentRoute.value.fullPath)
+  
+  ```
+    - 2.为什么要用.value？
+      - currentRoute是ref对象
+    - 3.为什么是fullPath而不是path？
+      - 假如路由是/user?id=100&a=xxx, .path获取到的结果是/user,而.fullPath获取的结果是/user?id=100&a=xxx
+    - 4.为什么会用encodeURIComponent包裹路由地址？
+      - encodeURIComponent是js原生的url编码API，对path进行编码，为了防止url里的特殊字符将来再解析时出错
+### -4.导出发起axios请求的函数
+- 1.动态设置属性
+用['属性名']设置会变的属性
+```js
+    a[10>1?"age":"name"]  //运行结果a[age] 
+```
+```js
+// 需求：根据请求方法，将数据动态设置到data/params属性上
+    [method.toLowerCase() === "get" ? 'params' : 'data']: submitData
+```
+- 2. 不同的请求方法，提交数据的参数不一样
+- 如果是get => params
+- 如果非post => data
+
+
+
+
+
+
+
+
+
+

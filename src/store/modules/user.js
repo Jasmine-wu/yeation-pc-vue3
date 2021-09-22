@@ -8,7 +8,7 @@ const state = () => {
             nickname: '',
             account: '',
             mobile: '',
-            token: ''
+            token: 'xxxx'
         }
     }
 };
@@ -17,16 +17,6 @@ const mutations = {
     setUser(state, playload) {
         state.profile = playload;
     },
-    removeUser(state) {
-        state.profile = {
-            id: '',
-            avatar: '',
-            nickname: '',
-            account: '',
-            mobile: '',
-            token: ''
-        }
-    }
 };
 const actions = {
 
