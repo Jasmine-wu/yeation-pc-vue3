@@ -2,6 +2,7 @@
 - pc
 - vue3
 - vue-cli
+- 组合API开发
 ## 01-.browserslistrc文件
 - 你的js代码适配哪些浏览器？
 - 市场份额>1%?
@@ -13,7 +14,32 @@
 ### 创建
 - vue2 new Vuex.Store({})
 - vue3 createStore({})
+### 在setup里访问容器里的数据
+```js
+import { useStore } from "vuex";
+  setup() {
+    // 1.获取store实例
+    const store = useStore();
+    // 2.访问state数据
+    // const token = store.state.token;
+    // 3.访问getters数据
+    // const message = store.getters.message;
+    // 4.调用mutations里的方法
+    const updateToken = () => {
+      store.commit("user/updateToken", "updateTokenxxx");
+    };
+    // 5.调用actions里的方法
+    const syncUpdateToken = () => {
+      store.dispatch("user/syncUpdateToken", "syncUpdateTokenxxx");
+    };
+    return { updateToken, syncUpdateToken };
+  },
+
+```
 ### module模块化
+- 模块命名空间默认namespaced:false.这时，state也是区分模块的，而mutaions/actions/getters是挂载到全局的
+- 模块namespaced:true。所有选项都区分模块
+- 总结：不管namespaced是什么，state都是区分模块的
 ### getter快捷访问
 
 ## 04-提高开发效率的几个配置文件
