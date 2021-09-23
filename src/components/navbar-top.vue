@@ -28,14 +28,16 @@
   </nav>
 </template>
 <script>
+import { computed } from "@vue/reactivity";
 import { useStore } from "vuex";
 export default {
   name: "AppTopnav",
   setup() {
     //  1.获取用户信息，显示或隐藏导航栏li
     const store = useStore();
-    const { profile } = store.state.user;
-    alert(profile.token);
+    // const { profile } = store.state.user; //注意：这样获取的数据不是响应式的
+    const profile = computed(() => store.state.user.profile); //这样才是响应式的
+
     return { profile };
   },
 };

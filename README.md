@@ -24,9 +24,11 @@
 - vue2 new Vuex.Store({})
 - vue3 createStore({})
 ### -在setup里访问容器里的数据
+
 ```js
 import { useStore } from "vuex";
   setup() {
+
     // 1.获取store实例
     const store = useStore();
     // 2.访问state数据
@@ -45,6 +47,23 @@ import { useStore } from "vuex";
   },
 
 ```
+#### 常见问题：
+- 问题（1）在setup中store.state.user.profile获取的数据不是响应式的。
+  - 那么，在html中使用setup return的profile.token也不是响应式。
+- 解决：
+  - 方案-：在html中直接用：$store.state.user.profile.token,这样获取的数据是响应式的
+  - 方案二：在setup获取profile，但用计算属性包裹一下再return出去。然后html再使用profile.token
+
+ ```js
+      setup() {
+        //  1.获取用户信息，显示或隐藏导航栏li
+        const store = useStore();
+        // const { profile } = store.state.user; //注意：这样获取的数据不是响应式的
+        const profile = computed(() => store.state.user.profile);
+
+        return { profile };
+      },
+ ```
 ### -module模块化
 - 模块命名空间默认namespaced:false.这时，state也是区分模块的，而mutaions/actions/getters是挂载到全局的
 - 模块namespaced:true。所有选项都区分模块
