@@ -2,11 +2,11 @@
   <div>
     <!-- 顶部导航通栏 -->
     <nav>
-      <app-navbar-top></app-navbar-top>
+      <app-top-toolbar></app-top-toolbar>
     </nav>
     <!-- 头部导航栏 -->
     <header>
-      <app-navbar-header></app-navbar-header>
+      <app-header></app-header>
     </header>
     <!-- 内容容器 -->
     <div class="main">
@@ -20,15 +20,15 @@
   </div>
 </template>
 <script>
-import AppNavbarTop from "@/components/app-navbar-top.vue";
-import AppNavbarHeader from "@/components/app-navbar-header.vue";
+import AppTopToolbar from "@/components/app-top-toolbar.vue";
+import AppHeader from "@/components/app-header.vue";
 import AppFooter from "@/components/app-footer.vue";
 
 export default {
   name: "Layout",
   components: {
-    AppNavbarTop,
-    AppNavbarHeader,
+    AppTopToolbar,
+    AppHeader,
     AppFooter,
   },
 };

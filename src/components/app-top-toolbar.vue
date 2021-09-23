@@ -31,7 +31,7 @@
 import { computed } from "@vue/reactivity";
 import { useStore } from "vuex";
 export default {
-  name: "AppTopnav",
+  name: "AppTopToolbar",
   setup() {
     //  1.获取用户信息，显示或隐藏导航栏li
     const store = useStore();
