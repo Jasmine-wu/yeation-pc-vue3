@@ -113,6 +113,18 @@ import { useStore } from "vuex";
 - 如果是get => params
 - 如果非post => data
 
+```js
+  // 4.导入发起axios请求的函数
+export default (url, method, submitData) => {
+  return instance({
+    url,
+    method,
+    // ['属性名']中括号设置一个会变的属性
+    [method.toLowerCase() === 'get' ? 'params' : 'data']: submitData
+  })
+}
+```
+
 ## 06-路由设计
 -  App挂载一级路由
 -  一级路由加载layout布局容器
@@ -169,19 +181,26 @@ import { useStore } from "vuex";
 ```
 ```js
 // 2.在vue.config.js文件中
-  pluginOptions: {
-        'style-resources-loader': {
-            preProcessor: 'less',
-            // 添加你需要注入的less到每个vue文件中的less文件
-            patterns: [
-                // 绝对路径
-                path.join(__dirname, './src/assets/styles/variables.less'),
-                path.join(__dirname, './src/assets/styles/mixins.less')
-            ]
-        }
-    }
-
+// 2.1
+const path = require('path');
+        pluginOptions: {
+              'style-resources-loader': {
+                  preProcessor: 'less',
+                  // 2.2添加你需要注入到每个vue文件中的less文件
+                  patterns: [
+                      // 使用绝对路径
+                      path.join(__dirname, './src/assets/styles/variables.less'),
+                      path.join(__dirname, './src/assets/styles/mixins.less')
+                  ]
+              }
+          }
 ```
+## 08-样式初始化文件
+### -安装样式重置的包并导入
+- 1.yarn add normalize.css
+- 2.在main.js中导入: import "normalize.css"
+### -创建自己的样式重置文件并导入-common.less
+
 
 
 
