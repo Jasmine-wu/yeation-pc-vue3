@@ -54,7 +54,7 @@ import { useStore } from "vuex";
 ### -vuex插件-vuex-persistedstate
 - 支持vuex的状态持久化。
 - yarn add vuex-persistedstate
-- 
+
 ```js
     // 插件初始化
     // 插件基本配置
@@ -66,15 +66,12 @@ import { useStore } from "vuex";
 
     }), ]
 ```
-
-
 ## 04-提高开发效率的几个配置文件
 - 问题1：@符号是webpack设置src目录的别名，但我们的vscode编辑器输入@确没有路径提示， 如何让编辑器有路径提示呢？
 - 解决：添加jsconfig.js文件，该文件只在当前项目生效
 - 问题2:忽略某些文件不进行风格检查
 - 理由：如果你引入的第三方库代码风格跟你的不一样，第三方库一引入，eslint就会报错
 - 解决：添加.eslintignore文件，忽略第三方库以及dist目录代码风格检查
-
 ## 05 axios封装
 ### -1.创建axios实例
 - 导出baseURL的必要，因为有些请求可能不是axios发出的也需要baseURL。
@@ -115,6 +112,78 @@ import { useStore } from "vuex";
 - 2. 不同的请求方法，提交数据的参数不一样
 - 如果是get => params
 - 如果非post => data
+
+## 06-路由设计
+-  App挂载一级路由
+-  一级路由加载layout布局容器
+-  layout布局容器挂载二级路由
+```js
+  const routes = [{
+    path: "/",
+    component: () =>
+        import ("@/views/layout.vue"),
+    children: [{
+        path: "/",
+        name: "home",
+        component: () =>
+            import ("@/views/home")
+
+    }]
+  }, ]
+```
+
+## 07-less的使用
+### -定义公共变量和混入代码
+- 定义公共变量：=>vairables.less
+- 嵌套语法
+- 定义自定义函数以及内置函数的混入文件 => mixins.less
+```less
+      // 1.定义一个类函数
+      .abc(){
+          width:100px;
+          height:100px;
+          background-color: red;
+      }
+
+      // 2.复用这个类函数
+      .box{
+          .abc()
+      }
+      // 3.在标签中使用class box
+```
+- 在style标签中使用less文件中定义的函数
+```less
+    <style lang="less" scoped>
+    @import "./assets/styles/mixins.less";
+    .containner {
+      .hoverShadow ();
+    }
+    </style>
+```
+### -自动导入公共变量文件以及混入文件
+- 问题： 每次使用公用的变量和mixin的时候需要单独引入到文件中。
+- 解决： 使用vuecli的vuecli的插件style-resoures-loader来完成自动注入到每个less文件或者vue组件中style标签中。
+```bash
+# 1.添加vuecli插件
+  vue add tyle-resoures-loader
+```
+```js
+// 2.在vue.config.js文件中
+  pluginOptions: {
+        'style-resources-loader': {
+            preProcessor: 'less',
+            // 添加你需要注入的less到每个vue文件中的less文件
+            patterns: [
+                // 绝对路径
+                path.join(__dirname, './src/assets/styles/variables.less'),
+                path.join(__dirname, './src/assets/styles/mixins.less')
+            ]
+        }
+    }
+
+```
+
+
 
 
 
