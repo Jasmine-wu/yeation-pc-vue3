@@ -2,10 +2,12 @@
   <div>
     <!-- 顶部导航通栏 -->
     <nav>
-      <navbar-top></navbar-top>
+      <app-navbar-top></app-navbar-top>
     </nav>
-    <!-- 头部 -->
-    <header></header>
+    <!-- 头部导航栏 -->
+    <header>
+      <app-navbar-header></app-navbar-header>
+    </header>
     <!-- 内容容器 -->
     <div class="main">
       <!-- 挂载二级路由 -->
@@ -16,11 +18,14 @@
   </div>
 </template>
 <script>
-import NavbarTop from "@/components/navbar-top.vue";
+import AppNavbarTop from "@/components/app-navbar-top.vue";
+import AppNavbarHeader from "@/components/app-navbar-header.vue";
+
 export default {
   name: "Layout",
   components: {
-    NavbarTop,
+    AppNavbarTop,
+    AppNavbarHeader,
   },
 };
 </script>
