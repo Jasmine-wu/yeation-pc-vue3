@@ -14,18 +14,22 @@
       <router-view></router-view>
     </div>
     <!-- 底部 -->
-    <footer></footer>
+    <footer>
+      <app-footer></app-footer>
+    </footer>
   </div>
 </template>
 <script>
 import AppNavbarTop from "@/components/app-navbar-top.vue";
 import AppNavbarHeader from "@/components/app-navbar-header.vue";
+import AppFooter from "@/components/app-footer.vue";
 
 export default {
   name: "Layout",
   components: {
     AppNavbarTop,
     AppNavbarHeader,
+    AppFooter,
   },
 };
 </script>
