@@ -144,11 +144,15 @@ export default (url, method, submitData) => {
   }, ]
 ```
 
-## 07-less的使用
+## 07-less的使用- 
+- 语法：
+  - 定义公共变量：=>vairables.less
+  - 嵌套语法
+  - 定义自定义函数以及内置函数的混入文件 => mixins.less
+- 注释：
+  - ～ li，表示选中排在父选择器后面的所有兄弟li元素
 ### -定义公共变量和混入代码
-- 定义公共变量：=>vairables.less
-- 嵌套语法
-- 定义自定义函数以及内置函数的混入文件 => mixins.less
+
 ```less
       // 1.定义一个类函数
       .abc(){

@@ -1,12 +1,13 @@
 <template>
   <div>
-    <!-- 顶部通知栏 -->
-    <nav></nav>
+    <!-- 顶部导航通栏 -->
+    <nav>
+      <navbar-top></navbar-top>
+    </nav>
     <!-- 头部 -->
     <header></header>
     <!-- 内容容器 -->
     <div class="main">
-      主体内容
       <!-- 挂载二级路由 -->
       <router-view></router-view>
     </div>
@@ -15,7 +16,11 @@
   </div>
 </template>
 <script>
+import NavbarTop from "@/components/navbar-top.vue";
 export default {
-  name: 'Layout'
-}
+  name: "Layout",
+  components: {
+    NavbarTop,
+  },
+};
 </script>
