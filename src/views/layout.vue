@@ -11,6 +11,7 @@
     <!-- 内容容器 -->
     <div class="main">
       <!-- 挂载二级路由 -->
+      <!-- app-heaer-nav路由跳转加载的view会挂载在这里 -->
       <router-view></router-view>
     </div>
     <!-- 底部 -->

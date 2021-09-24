@@ -5,12 +5,16 @@
     <li class="home"><RouterLink to="/">首页</RouterLink></li>
     <!-- 一级类目 -->
     <li v-for="category in categoryList" :key="category.id">
-      <RouterLink to="/">{{ category.name }}</RouterLink>
+      <!-- 点击一级类目跳转： -->
+      <RouterLink :to="`/category/${category.id}`">{{
+        category.name
+      }}</RouterLink>
       <!-- 二级类目 -->
       <div class="layer">
         <ul>
           <li v-for="subCategory in category.children" :key="subCategory.id">
-            <RouterLink to="/">
+            <!-- 点击一级类目跳转： -->
+            <RouterLink :to="`/category/sub/${subCategory.id}`">
               <img :src="subCategory.picture" alt="" />
               <p>{{ subCategory.name }}</p>
             </RouterLink>
