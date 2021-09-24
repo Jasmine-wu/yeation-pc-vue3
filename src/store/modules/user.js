@@ -8,7 +8,7 @@ const state = () => {
             nickname: '',
             account: '',
             mobile: '',
-            token: ''
+            token: 'w'
         }
     }
 }

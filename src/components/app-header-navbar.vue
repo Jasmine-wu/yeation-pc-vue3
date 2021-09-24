@@ -4,17 +4,27 @@
   <ul class="app-header-navbar">
     <li class="home"><RouterLink to="/">首页</RouterLink></li>
     <!-- 一级类目 -->
-    <li v-for="category in categoryList" :key="category.id">
+    <li
+      v-for="category in categoryList"
+      :key="category.id"
+      @mouseenter="showSub(true, category.id)"
+      @mouseleave="showSub(false, category.id)"
+    >
       <!-- 点击一级类目跳转： -->
-      <RouterLink :to="`/category/${category.id}`">{{
-        category.name
-      }}</RouterLink>
+      <RouterLink
+        :to="`/category/${category.id}`"
+        @click="showSub(false, category.id)"
+        >{{ category.name }}</RouterLink
+      >
       <!-- 二级类目 -->
-      <div class="layer">
+      <div class="layer" :class="{ open: category.open }">
         <ul>
           <li v-for="subCategory in category.children" :key="subCategory.id">
             <!-- 点击一级类目跳转： -->
-            <RouterLink :to="`/category/sub/${subCategory.id}`">
+            <RouterLink
+              :to="`/category/sub/${subCategory.id}`"
+              @click="showSub(false, category.id)"
+            >
               <img :src="subCategory.picture" alt="" />
               <p>{{ subCategory.name }}</p>
             </RouterLink>
@@ -35,7 +45,15 @@ export default {
     const categoryList = computed(() => {
       return store.state.category.categoryList;
     });
-    return { categoryList };
+    // 修改open属性的状态
+    const showSub = (isShow, topId) => {
+      if (isShow) {
+        store.commit("category/showSub", topId);
+      } else {
+        store.commit("category/hideSub", topId);
+      }
+    };
+    return { categoryList, showSub };
   },
 };
 </script>
@@ -63,16 +81,21 @@ export default {
         border-bottom: 1px solid @xtxColor;
       }
       // 显示二级类目
-      > .layer {
-        height: 132px;
-        opacity: 1;
-      }
+      // > .layer {
+      //   height: 132px;
+      //   opacity: 1;
+      // }
     }
   }
 }
 
 // 二级类目的样式
 .layer {
+  // 显示二级类目的动态类
+  &.open {
+    height: 132px;
+    opacity: 1;
+  }
   width: 1240px;
   background-color: #fff;
   position: absolute; //子绝
