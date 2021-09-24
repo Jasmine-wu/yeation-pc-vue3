@@ -3,36 +3,36 @@
   <!-- 提取头部导航组件给头部导航以及吸顶头部导航使用 -->
   <ul class="app-header-navbar">
     <li class="home"><RouterLink to="/">首页</RouterLink></li>
-    <li>
-      <a href="#">美食</a>
+    <!-- 一级类目 -->
+    <li v-for="category in categoryList" :key="category.id">
+      <RouterLink to="/">{{ category.name }}</RouterLink>
       <!-- 二级类目 -->
       <div class="layer">
         <ul>
-          <li v-for="i in 10" :key="i">
-            <a href="#">
-              <img
-                src="http://zhoushugang.gitee.io/erabbit-client-pc-static/uploads/img/category%20(4).png"
-                alt=""
-              />
-              <p>果干</p>
-            </a>
+          <li v-for="subCategory in category.children" :key="subCategory.id">
+            <RouterLink to="/">
+              <img :src="subCategory.picture" alt="" />
+              <p>{{ subCategory.name }}</p>
+            </RouterLink>
           </li>
         </ul>
       </div>
     </li>
-    <li><a href="#">餐厨</a></li>
-    <li><a href="#">艺术</a></li>
-    <li><a href="#">电器</a></li>
-    <li><a href="#">居家</a></li>
-    <li><a href="#">洗护</a></li>
-    <li><a href="#">孕婴</a></li>
-    <li><a href="#">服装</a></li>
-    <li><a href="#">杂货</a></li>
   </ul>
 </template>
 <script>
+import { computed } from "@vue/reactivity";
+import { useStore } from "vuex";
 export default {
   name: "AppHeaderNavBar",
+  setup() {
+    const store = useStore();
+
+    const categoryList = computed(() => {
+      return store.state.category.categoryList;
+    });
+    return { categoryList };
+  },
 };
 </script>
 <style lang="less" scoped>
@@ -78,7 +78,7 @@ export default {
   height: 0; //
   opacity: 0; //默认隐藏
   box-shadow: 0 0 5px #ccc;
-  transition: all 0.2s 0.1s;
+  transition: all 0.2s 0.1s; //show动画
   ul {
     display: flex;
     flex-wrap: wrap;

@@ -23,13 +23,18 @@
 import AppTopToolbar from "@/components/app-top-toolbar.vue";
 import AppHeader from "@/components/app-header.vue";
 import AppFooter from "@/components/app-footer.vue";
-
+import { useStore } from "vuex";
 export default {
   name: "Layout",
   components: {
     AppTopToolbar,
     AppHeader,
     AppFooter,
+  },
+  setup() {
+    // 1.布局开始获取分类数据
+    const store = useStore();
+    store.dispatch("category/getCategoryList");
   },
 };
 </script>
