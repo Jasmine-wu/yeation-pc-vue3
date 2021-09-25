@@ -1,6 +1,6 @@
 <template>
-  <h1>home</h1>
+  <div style="height: 3000px">home</div>
 </template>
 <script>
-export default {}
+export default {};
 </script>

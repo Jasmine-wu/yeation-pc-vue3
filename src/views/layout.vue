@@ -6,7 +6,10 @@
     </nav>
     <!-- 头部导航栏 -->
     <header>
+      <!-- 非吸顶头部 -->
       <app-header></app-header>
+      <!-- 吸顶头部 -->
+      <app-header-sticky />
     </header>
     <!-- 内容容器 -->
     <div class="main">
@@ -24,6 +27,8 @@
 import AppTopToolbar from "@/components/app-top-toolbar.vue";
 import AppHeader from "@/components/app-header.vue";
 import AppFooter from "@/components/app-footer.vue";
+import AppHeaderSticky from "@/components/app-header-sticky.vue";
+
 import { useStore } from "vuex";
 export default {
   name: "Layout",
@@ -31,6 +36,7 @@ export default {
     AppTopToolbar,
     AppHeader,
     AppFooter,
+    AppHeaderSticky,
   },
   setup() {
     // 1.布局开始获取分类数据

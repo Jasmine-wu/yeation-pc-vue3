@@ -171,7 +171,9 @@ export default (url, method, submitData) => {
 - 注释：
   - ～ li，表示选中排在父选择器后面的所有兄弟li元素
   - & ：父选择器的引用
-  - < : 子代选择器
+  - < li: 父选择器的子代li
+  - &.show{}的意识是父元素app-header-sticky的另一个类show
+
 ### -定义公共变量和混入代码
 
 ```less
