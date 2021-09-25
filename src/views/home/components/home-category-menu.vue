@@ -1,5 +1,6 @@
 <template>
   <div class="category-menu">
+    <!-- 分类菜单 -->
     <ul class="menu-content">
       <li v-for="category in menuList" :key="category.id">
         <router-link :to="`/category/${category.id}`">{{
@@ -16,6 +17,28 @@
         </template>
       </li>
     </ul>
+
+    <!-- 分类推荐弹层次 -->
+    <div class="layer">
+      <div class="layer-title">
+        <span>分类推荐</span>
+        <span>根据您的购买记录或者浏览记录推荐</span>
+      </div>
+      <ul class="layer-content">
+        <li v-for="(i, index) in 9" :key="index">
+          <img
+            class="left"
+            src="https://yanxuan-item.nosdn.127.net/5a115da8f2f6489d8c71925de69fe7b8.png"
+            alt=""
+          />
+          <div class="right">
+            <p class="name ellipsis-2">【定金购】严选零食大礼包（12件）</p>
+            <p class="desc ellipsis">超值组合装，满足馋嘴欲</p>
+            <p class="price"><i>¥</i>100.00</p>
+          </div>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 <script>
@@ -60,6 +83,7 @@ export default {
   width: 250px;
   height: 500px;
   background: rgba(0, 0, 0, 0.8);
+  position: relative;
   .menu-content {
     li {
       height: 50px;
@@ -76,6 +100,80 @@ export default {
 
       &:nth-child(1) {
         font-size: 16px;
+      }
+    }
+  }
+  // 分类推荐
+  .layer {
+    // 绝对定位，固定宽高
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 100%;
+    width: 990px;
+    padding: 0 15px;
+    border: 1px solid @xtxColor;
+    background: rgba(255, 255, 255, 0.8);
+
+    // 标题
+    .layer-title {
+      height: 60px;
+      line-height: 60px;
+
+      span:nth-child(1) {
+        font-size: 18px;
+      }
+      span:nth-child(2) {
+        font-size: 15px;
+        margin-left: 10px;
+        color: #999;
+      }
+    }
+    // 分类详情
+    .layer-content {
+      display: flex;
+      // 换行
+      flex-wrap: wrap;
+      margin: 10px 0;
+
+      li {
+        display: flex;
+        width: 310px;
+        height: 120px;
+        padding: 10px;
+        margin-right: 12px;
+        &:nth-child(3n) {
+          margin-right: 0;
+        }
+        margin-bottom: 12px;
+        border: 1px solid #eee;
+        border-radius: 4px;
+        background: #fff;
+
+        .right {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          .name {
+            font-size: 16px;
+            color: #666;
+          }
+          .desc {
+            color: #999;
+          }
+          .price {
+            font-size: 22px;
+            color: @priceColor;
+            i {
+              font-size: 16px;
+            }
+          }
+        }
+      }
+      img {
+        width: 95px;
+        height: 95px;
+        margin-right: 5px;
       }
     }
   }
