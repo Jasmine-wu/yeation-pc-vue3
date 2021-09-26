@@ -20,6 +20,21 @@
             >{{ sub.name }}</router-link
           >
         </template>
+        <template v-else
+          ><!-- 无数据时显示骨架屏加载效果插件 -->
+          <YtnSkeleton
+            width="60px"
+            height="18px"
+            style="margin-left: 5px"
+            bg="rgba(255,255,255,0.2)"
+          />
+          <YtnSkeleton
+            width="90px"
+            height="18px"
+            style="margin-left: 5px"
+            bg="rgba(255,255,255,0.2)"
+          />
+        </template>
       </li>
     </ul>
 
@@ -236,6 +251,19 @@ export default {
     .layer {
       display: block;
     }
+  }
+}
+
+// 骨架屏透明度来回变化的动画
+.xtx-skeleton {
+  animation: fade 1s linear infinite alternate;
+}
+@keyframes fade {
+  from {
+    opacity: 0.2;
+  }
+  to {
+    opacity: 1;
   }
 }
 </style>

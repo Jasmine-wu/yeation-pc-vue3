@@ -6,5 +6,7 @@ import store from './store'
 import "normalize.css"
 // 执行自己的样式重置文件
 import "@/assets/styles/common.less"
+// 导入自己的全局组件库
+import YtnUI from "@/components/library"
 
-createApp(App).use(store).use(router).mount('#app');
+createApp(App).use(store).use(router).use(YtnUI).mount('#app');
