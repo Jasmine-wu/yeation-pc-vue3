@@ -6,6 +6,7 @@
         v-for="category in menuList"
         :key="category.id"
         @mouseenter="categoryId = category.id"
+        :class="{ active: categoryId === category.id }"
       >
         <router-link :to="`/category/${category.id}`">{{
           category.name
@@ -23,7 +24,7 @@
     </ul>
 
     <!-- 分类推荐弹层次 -->
-    <div class="layer">
+    <div class="layer" @mouseleave="categoryId = null">
       <div class="layer-title">
         <span
           >{{
@@ -117,6 +118,9 @@ export default {
     // lastBrand.goods =
     //   data.result.length > 9 ? data.result.slice(0, 9) : data.result;
 
+    // 4. 激活当前分类
+    // 4.1 鼠标经过menu li，或者鼠标在当前li的layer里时，保持li的激活状态
+    // 4.2 鼠标离开layer/li时，取消当前li的激活状态
     // menuList.push(brand); //而不是这里
     return { menuList, categoryId, curRecoms };
   },
@@ -133,7 +137,9 @@ export default {
       height: 50px;
       line-height: 50px;
       padding-left: 20px;
-      &:hover {
+      // 激活状态
+      &:hover,
+      &.active {
         background-color: @xtxColor;
       }
     }
