@@ -39,7 +39,6 @@ export default {
   position: relative;
   overflow: hidden;
   vertical-align: middle;
-  // 透明度fade动画
   animation: fade 1s linear infinite alternate;
 
   .block {
@@ -52,34 +51,38 @@ export default {
   &::after {
     content: "";
     position: absolute;
-    animation: shan 1.5s ease 0s infinite;
+    // animation: shan 1.5s ease 0s infinite;
     top: 0;
-    width: 50%;
+    left: 0;
+    width: 100%;
     height: 100%;
-    background: linear-gradient(
-      to left,
-      rgba(255, 255, 255, 0) 0,
-      rgba(255, 255, 255, 0.3) 50%,
-      rgba(255, 255, 255, 0) 100%
-    );
-    transform: skewX(-45deg);
+    // backgrounrgb(165, 148, 148)linear-gradient(
+    //   to left,
+    //   rgba(255, 255, 255, 0) 0,
+    //   rgba(255, 255, 255, 0.3) 50%,
+    //   rgba(255, 255, 255, 0) 100%
+    // );
+    // transform: skewX(-45deg);
+
+    // 透明度fade动画
+    // animation: fade 1s linear infinite alternate;
   }
 }
-@keyframes shan {
-  0% {
-    left: -100%;
-  }
-  100% {
-    left: 120%;
-  }
-}
+// @keyframes shan {
+//   0% {
+//     left: -100%;
+//   }
+//   100% {
+//     left: 120%;
+//   }
+// }
 
 @keyframes fade {
   from {
     opacity: 0.2;
   }
   to {
-    opacity: 1;
+    opacity: 0.8;
   }
 }
 </style>

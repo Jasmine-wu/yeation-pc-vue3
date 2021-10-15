@@ -22,18 +22,8 @@
         </template>
         <template v-else
           ><!-- 无数据时显示骨架屏加载效果插件 -->
-          <YtnSkeleton
-            width="60px"
-            height="18px"
-            style="margin-left: 5px"
-            bg="rgba(255,255,255,0.2)"
-          />
-          <YtnSkeleton
-            width="90px"
-            height="18px"
-            style="margin-left: 5px"
-            bg="rgba(255,255,255,0.2)"
-          />
+          <YtnSkeleton width="60px" height="18px" style="margin-left: 5px" />
+          <YtnSkeleton width="90px" height="18px" style="margin-left: 5px" />
         </template>
       </li>
     </ul>
