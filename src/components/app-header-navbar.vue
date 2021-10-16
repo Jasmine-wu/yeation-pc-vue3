@@ -99,6 +99,7 @@ export default {
   width: 1240px;
   background-color: #fff;
   position: absolute; //子绝
+  z-index: 9999; //解决层级问题
   left: -200px;
   top: 56px;
   overflow: hidden;
