@@ -2,14 +2,14 @@
   <div>
     <!-- 顶部导航通栏 -->
     <nav>
-      <app-top-toolbar></app-top-toolbar>
+      <app-top-toolbar/>
     </nav>
     <!-- 头部导航栏 -->
     <header>
-      <!-- 非吸顶头部 -->
-      <app-header></app-header>
       <!-- 吸顶头部 -->
       <app-header-sticky />
+      <!-- 非吸顶头部 -->
+      <app-header />
     </header>
     <!-- 内容容器 -->
     <div class="main">
@@ -19,7 +19,7 @@
     </div>
     <!-- 底部 -->
     <footer>
-      <app-footer></app-footer>
+      <app-footer/>
     </footer>
   </div>
 </template>

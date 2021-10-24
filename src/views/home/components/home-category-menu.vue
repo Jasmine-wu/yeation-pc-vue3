@@ -245,16 +245,4 @@ export default {
   }
 }
 
-// 骨架屏透明度来回变化的动画
-.xtx-skeleton {
-  animation: fade 1s linear infinite alternate;
-}
-@keyframes fade {
-  from {
-    opacity: 0.2;
-  }
-  to {
-    opacity: 1;
-  }
-}
 </style>

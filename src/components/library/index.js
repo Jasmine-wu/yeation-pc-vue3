@@ -5,6 +5,7 @@
 
 import YtnSkeleton from "./ytn-skeleton.vue"
 import YtnSwiper from "./ytn-swiper.vue"
+import YtnMore from "./ytn-more.vue"
 
 export default {
     install(app) {
@@ -12,5 +13,8 @@ export default {
         // 2.原型挂载要另外写：app.config.globalProperties.$http = xxx;
         app.component(YtnSkeleton.name, YtnSkeleton)
         app.component(YtnSwiper.name, YtnSwiper)
+        app.component(YtnMore.name, YtnMore)
+
+
     }
 }

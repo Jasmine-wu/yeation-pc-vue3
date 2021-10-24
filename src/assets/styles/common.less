@@ -104,3 +104,16 @@
      line-height: 0;
      clear: both;
    }
+
+   // 对移除的元素添加淡出动画
+.fade {
+  &-leave {
+    &-active {
+      position: absolute;
+      transition: all .5s;
+    }
+    &-to {
+      opacity: 0;
+    }
+  }
+}
