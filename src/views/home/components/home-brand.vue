@@ -50,7 +50,9 @@ export default {
   setup() {
     const goods = ref([]);
     // 数据懒加载
-    const { target, result } = lazyLoadData(findBrand);
+    // const { target, result } = lazyLoadData(findBrand(10));
+    // 传入的参数是函数，且这个参数函数也要传参，怎么做？
+    const { target, result } = lazyLoadData(() => findBrand(10));
 
     // 点击上一页/下一页
     const currentIndex = ref(0);
