@@ -3,7 +3,7 @@
   <home-pannel title="人气推荐" subTitle="人气爆款 不容错过">
     <!-- 面板内容:默认插槽 -->
     <div ref="target" style="position: relative; height: 406px">
-      <ul v-if="goods.length" class="goods-list">
+      <ul class="goods-list" v-if="goods.length">
         <li v-for="good in goods" :key="good.id">
           <img :src="good.picture" alt="" />
           <h2 class="name">{{ good.title }}</h2>
@@ -24,11 +24,12 @@ import HomePannel from "./home-pannel.vue";
 import HomeSkeleton from "./home-skeleton.vue";
 
 export default {
-  name: "HomeHot",
+  name: "HomeNew",
   components: { HomePannel, HomeSkeleton },
   setup() {
     const goods = ref([]);
     const { target, result } = lazyLoadData(findHot);
+
     return { goods: result, target };
   },
 };
