@@ -1,6 +1,6 @@
 <template>
   <!-- 人气推荐组件 -->
-  <home-pannel title="人气推荐" subTitle="人气爆款 不容错过">
+  <home-pannel title="人气推荐" subTitle="人气爆款 不容错过" ref="target">
     <!-- 面板内容:默认插槽 -->
     <div ref="target" style="position: relative; height: 406px">
       <ul class="goods-list" v-if="goods.length">

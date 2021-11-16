@@ -21,10 +21,11 @@ export default {
 <style lang="less" scoped>
 .ytn-more {
   .more {
-    font-size: 12px;
+    font-size: 16px;
+    color: #999;
   }
   i {
-    font-size: 8px;
+    font-size: 14px;
   }
   &:hover {
     .more,

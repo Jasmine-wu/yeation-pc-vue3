@@ -2,7 +2,7 @@
   <div>
     <!-- 顶部导航通栏 -->
     <nav>
-      <app-top-toolbar/>
+      <app-top-toolbar />
     </nav>
     <!-- 头部导航栏 -->
     <header>
@@ -19,7 +19,7 @@
     </div>
     <!-- 底部 -->
     <footer>
-      <app-footer/>
+      <app-footer />
     </footer>
   </div>
 </template>

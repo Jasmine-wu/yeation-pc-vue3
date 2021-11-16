@@ -10,9 +10,11 @@
       <!-- 新鲜好物 -->
       <home-new />
       <!-- 人气推荐 -->
-      <home-hot />
+      <!-- <home-hot /> -->
       <!-- 热门品牌 -->
-      <home-brand />
+      <!-- <home-brand /> -->
+      <!-- 居家 -->
+      <!-- <home-product /> -->
     </div>
   </div>
 </template>
@@ -24,6 +26,7 @@ import HomeBanner from "./components/home-banner.vue";
 import HomeNew from "./components/home-new.vue";
 import HomeHot from "./components/home-hot.vue";
 import HomeBrand from "./components/home-brand.vue";
+import HomeProduct from "./components/home-product.vue";
 
 export default {
   name: "home",
@@ -34,6 +37,7 @@ export default {
     HomeNew,
     HomeHot,
     HomeBrand,
+    HomeProduct,
   },
 };
 </script>

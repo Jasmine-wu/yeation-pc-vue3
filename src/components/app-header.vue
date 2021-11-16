@@ -1,11 +1,11 @@
 <template>
-<!-- 头部组件 -->
+  <!-- 头部组件 -->
   <header class="app-header">
-    <div class="container">
+    <div class="container" v-show="y < 53">
       <h1 class="logo"><RouterLink to="/">小兔鲜</RouterLink></h1>
 
       <!-- 头部导航栏组件 -->
-      <app-header-navbar></app-header-navbar>
+      <app-header-navbar />
 
       <div class="search">
         <i class="iconfont icon-search"></i>
@@ -22,10 +22,17 @@
 
 <script>
 import AppHeaderNavbar from "@/components/app-header-navbar.vue";
+import { useWindowScroll } from "@vueuse/core";
+
 export default {
   name: "AppHeader",
   components: {
     AppHeaderNavbar,
+  },
+  setup() {
+    // fix bug：确保同一时间只显示一个头部,一个app-header-navbar
+    const { y } = useWindowScroll();
+    return { y };
   },
 };
 </script>

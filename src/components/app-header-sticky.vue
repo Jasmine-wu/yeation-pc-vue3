@@ -1,12 +1,12 @@
 <template>
   <!-- 4.根据卷去的顶部高度，动态设置类show -->
-  <div class="app-header-sticky" :class="{ show: y >= 78 }">
+  <div class="app-header-sticky" :class="{ show: y >= 53 }" v-show="y >= 53">
     <!-- fixbug：吸顶头部和非吸顶头部监听的是mouseenter/mouseleave/click事件，共用的是同一个容器open属性。
     最开始当鼠标enter非吸顶头部的app-header-navbar时，open属性设置为true，即所有的app-header-navbar都会显示二级类目。
     这时，当用户鼠标向上准备离开非吸顶头部的app-header-navbar时，会发现，二级类目并没有隐藏。
     解决：两个app-header-navbar同一事件只在当前页dom中存在一个:v-show="y >= 78"
      -->
-    <div class="container" v-show="y >= 78">
+    <div class="container">
       <RouterLink class="logo" to="/" />
       <AppHeaderNavbar />
       <div class="right">
@@ -18,7 +18,6 @@
 </template>
 
 <script>
-// import { onMounted, ref } from "vue";
 import AppHeaderNavbar from "./app-header-navbar";
 import { useWindowScroll } from "@vueuse/core";
 export default {
