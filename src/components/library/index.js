@@ -7,6 +7,8 @@
 import YtnSkeleton from "./ytn-skeleton.vue"
 import YtnSwiper from "./ytn-swiper.vue"
 import YtnMore from "./ytn-more.vue"
+import YtnBreadcrumb from "./ytn-breadcrumb"
+import YtnBreadcrumbItem from "@/components/library/ytn-breadcrumb/ytn-breadcrumb-item.vue";
 import defaultImg from "@/assets/images/200.png"
 
 export default {
@@ -16,7 +18,9 @@ export default {
         // 2.原型挂载要另外写：app.config.globalProperties.$http = xxx;
         app.component(YtnSkeleton.name, YtnSkeleton)
         app.component(YtnSwiper.name, YtnSwiper)
-        app.component(YtnMore.name, YtnMore)
+        app.component(YtnMore.name, YtnMore);
+        app.component(YtnBreadcrumb.name, YtnBreadcrumb);
+        app.component(YtnBreadcrumbItem.name, YtnBreadcrumbItem);
 
         // 二，注册全局指令
         defineDirectives(app);
