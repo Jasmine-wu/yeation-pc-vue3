@@ -4,23 +4,32 @@
 // vue2.0插件写法要素：导出一个对象，有install函数，默认传入了Vue构造函数，Vue基础之上扩展
 // vue3.0插件写法要素：导出一个对象，有install函数，默认传入了app应用实例，app基础之上扩展
 
-import YtnSkeleton from "./ytn-skeleton.vue"
-import YtnSwiper from "./ytn-swiper.vue"
-import YtnMore from "./ytn-more.vue"
-import YtnBreadcrumb from "./ytn-breadcrumb"
-import YtnBreadcrumbItem from "@/components/library/ytn-breadcrumb/ytn-breadcrumb-item.vue";
+// import YtnSkeleton from "./ytn-skeleton.vue"
+// import YtnSwiper from "./ytn-swiper.vue"
+// import YtnMore from "./ytn-more.vue"
+// import YtnBreadcrumb from "./ytn-breadcrumb.vue"
+// import YtnBreadcrumbItem from "./ytn-breadcrumb-item.vue";
 import defaultImg from "@/assets/images/200.png"
+
 
 export default {
     install(app) {
         // 一，注册全局组件
         // 1.app 提供component/directive方法挂载全局组件/指令，不提供原型挂载
         // 2.原型挂载要另外写：app.config.globalProperties.$http = xxx;
-        app.component(YtnSkeleton.name, YtnSkeleton)
-        app.component(YtnSwiper.name, YtnSwiper)
-        app.component(YtnMore.name, YtnMore);
-        app.component(YtnBreadcrumb.name, YtnBreadcrumb);
-        app.component(YtnBreadcrumbItem.name, YtnBreadcrumbItem);
+        // app.component(YtnSkeleton.name, YtnSkeleton)
+        // app.component(YtnSwiper.name, YtnSwiper)
+        // app.component(YtnMore.name, YtnMore);
+        // app.component(YtnBreadcrumb.name, YtnBreadcrumb);
+        // app.component(YtnBreadcrumbItem.name, YtnBreadcrumbItem);
+
+        // 批量注册全局组件
+        //  参数：1. 目录  2. 是否加载子目录  3. 加载的正则匹配
+        const importFn = require.context("./", false, /\.vue$/);
+        importFn.keys().forEach((path, index) => {
+            const component = importFn(path).default;
+            app.component(component.name, component)
+        })
 
         // 二，注册全局指令
         defineDirectives(app);

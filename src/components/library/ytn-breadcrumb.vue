@@ -30,10 +30,6 @@ export default {
       type: String,
       default: "/",
     },
-    separator: {
-      type: String,
-      default: ">",
-    },
   },
 };
 </script>
