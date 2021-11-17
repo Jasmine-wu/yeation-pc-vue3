@@ -27,7 +27,7 @@
       <!-- 内容主体 -->
       <div class="content">
         <a href="javascript:;" class="content-left">
-          <img :src="product.picture" alt="" />
+          <img v-lazy="product.picture" alt="" />
         </a>
         <div class="content-right">
           <home-goods
@@ -56,7 +56,6 @@ export default {
   components: { HomePannel, HomeSkeleton, YtnMore, HomeGoods },
   setup() {
     const { result, target } = lazyLoadData(findGoods);
-    console.log(result);
     const products = ref([]);
     return { target, products: result };
   },

@@ -28,7 +28,7 @@
         :style="{ transform: `translateX(${-currentIndex * 1240}px)` }"
       >
         <li v-for="brand in brands" :key="brand.id">
-          <img :src="brand.picture" alt="" />
+          <img v-lazy="brand.picture" alt="" />
         </li>
       </ul>
       <!-- 面板骨架屏效果 -->

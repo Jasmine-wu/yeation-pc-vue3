@@ -14,7 +14,7 @@
         <ul v-if="goods && goods.length" class="goods-list">
           <li v-for="good in goods" :key="good.id">
             <router-link to="/">
-              <img :src="good.picture" alt="" />
+              <img v-lazy="good.picture" alt="" />
               <!-- 一行省略ellipsis -->
               <h2 class="name ellipsis">{{ good.name }}</h2>
               <h2 class="price">¥{{ good.price }}</h2>

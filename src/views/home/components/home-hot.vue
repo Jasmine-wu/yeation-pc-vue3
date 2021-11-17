@@ -1,11 +1,11 @@
 <template>
   <!-- 人气推荐组件 -->
-  <home-pannel title="人气推荐" subTitle="人气爆款 不容错过" ref="target">
+  <home-pannel title="人气推荐" subTitle="人气爆款 不容错过">
     <!-- 面板内容:默认插槽 -->
     <div ref="target" style="position: relative; height: 406px">
       <ul class="goods-list" v-if="goods.length">
         <li v-for="good in goods" :key="good.id">
-          <img :src="good.picture" alt="" />
+          <img v-lazy="good.picture" alt="" />
           <h2 class="name">{{ good.title }}</h2>
           <h2 class="desc">{{ good.alt }}</h2>
         </li>

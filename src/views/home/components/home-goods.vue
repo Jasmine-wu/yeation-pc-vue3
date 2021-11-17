@@ -1,7 +1,9 @@
 <template>
   <div class="goods-wraper">
     <!-- 首页单个商品组件 -->
-    <a class="image" href="javascript:;"><img :src="data.picture" alt="" /></a>
+    <a class="image" href="javascript:;"
+      ><img v-lazy="data.picture" alt=""
+    /></a>
     <p class="ellipsis-2">{{ data.name }}</p>
     <p class="ellipsis desc" itemref="">{{ data.desc }}</p>
     <p class="price">¥ {{ data.price }}</p>
