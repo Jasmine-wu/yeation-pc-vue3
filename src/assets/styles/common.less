@@ -117,3 +117,23 @@
     }
   }
 }
+
+   // 从右边淡入/淡出动画
+.fade-right {
+    &-enter-from,
+    &-leave-to {
+      opacity: 0;
+      transform: translateX(20px);
+    }
+
+    &-enter-active,
+    &-leave-active {
+      transition: all, 0.5s;
+    }
+
+    &-enter-to,
+    &-leave-from {
+      opacity: 1; //不透明
+      transform: none;
+    }
+  }

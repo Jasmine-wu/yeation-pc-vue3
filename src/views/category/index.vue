@@ -6,7 +6,11 @@
       <!-- 面包屑组件 -->
       <YtnBreadcrumb>
         <YtnBreadcrumbItem to="/">首页</YtnBreadcrumbItem>
-        <YtnBreadcrumbItem>{{ topCategory.name }}</YtnBreadcrumbItem>
+        <transition name="fade-right" mode="out-in">
+          <YtnBreadcrumbItem :key="topCategory.id">{{
+            topCategory.name
+          }}</YtnBreadcrumbItem>
+        </transition>
       </YtnBreadcrumb>
 
       <!-- 轮播图 -->

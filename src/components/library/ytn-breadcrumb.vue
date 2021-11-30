@@ -21,7 +21,7 @@ export default {
       }
     });
 
-    return h("ytn-breadcrumb", { class: "ytn-breadcrumb" }, dymanicItems);
+    return h("div", { class: "ytn-breadcrumb" }, dymanicItems);
   },
 
   props: {
