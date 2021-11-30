@@ -4,7 +4,7 @@ import { h } from "vue";
 export default {
   name: "YtnBreadcrumb",
   render() {
-    // 1. 获取默认插槽里的内容
+    // 1. 获取默认插槽里的内容(所有子标签)
     const items = this.$slots.default();
     // 2. 根据item个数动态生成i
     const dymanicItems = [];
