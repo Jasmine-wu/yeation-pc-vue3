@@ -43,7 +43,7 @@ import { findBanner } from "@/api/home";
 import { findTopCategory } from "@/api/category";
 import { useStore } from "vuex";
 import { useRoute } from "vue-router";
-import { computed, ref } from "vue";
+import { computed, ref, watch } from "vue";
 import GoodsItem from "./components/goods-item";
 export default {
   name: "TopCategory",
@@ -72,14 +72,22 @@ export default {
 
     // 推荐商品
     // 路由切换时在路由规则没变的情况下是不会导致组件初始化的，setup方法不走，这里数据就不会更新
-    // 解决：
-    const subList = computed(() => {
-      return findTopCategory(route.params.id).then((data) => {
-        return data.result.children;
-      });
-    });
+    // 解决：用watch
+    const subList = ref([]);
 
-    console.log(subList);
+    const getSublist = () => {
+      findTopCategory(route.params.id).then((data) => {
+        subList.value = data.result.children;
+      });
+    };
+
+    watch(
+      () => route.params.id,
+      (newId) => {
+        newId && getSublist();
+      },
+      { immediate: true }
+    );
 
     return {
       sliders,
