@@ -4,6 +4,7 @@
   <div class="top-category">
     <div class="container">
       <!-- 面包屑组件 -->
+      <!-- key值变化时组件会重新创建和移除 -->
       <YtnBreadcrumb>
         <YtnBreadcrumbItem to="/">首页</YtnBreadcrumbItem>
         <transition name="fade-right" mode="out-in">
@@ -88,6 +89,7 @@ export default {
     watch(
       () => route.params.id,
       (newId) => {
+        console.log("id变化了");
         newId && getSublist();
       },
       { immediate: true }

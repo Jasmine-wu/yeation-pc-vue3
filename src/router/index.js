@@ -28,6 +28,14 @@ const routes = [{
 }]
 const router = createRouter({
     history: createWebHashHistory(),
-    routes
+    routes,
+    // 切换路由时，使页面滚回顶部
+    scrollBehavior() {
+        return {
+            left: 0,
+            top: 0,
+            behavior: "smooth"
+        }
+    }
 })
 export default router
