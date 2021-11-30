@@ -7,7 +7,7 @@
     <li
       v-for="category in categoryList"
       :key="category.id"
-      @mouseenter="showSub(true, category.id)"
+      @mousemove="showSub(true, category.id)"
       @mouseleave="showSub(false, category.id)"
     >
       <!-- 点击一级类目跳转： -->
