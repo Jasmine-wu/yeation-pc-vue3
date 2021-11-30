@@ -90,7 +90,10 @@ export default {
       () => route.params.id,
       (newId) => {
         console.log("id变化了");
-        newId && getSublist();
+        // newId && getSublist();
+        if (newId && route.path === `"/category/${route.params.id}"`) {
+          getSublist();
+        }
       },
       { immediate: true }
     );
